@@ -1,3 +1,0 @@
-/Volumes/YONNARGE_HP/github/algorithms_c/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Volumes/YONNARGE_HP/github/algorithms_c/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Volumes/YONNARGE_HP/github/algorithms_c/cmake-build-debug/CMakeFiles/algorithms_c.dir
