@@ -40,8 +40,8 @@
 
        printf("sorted a: ");
        for (i = 0; i < n; i++) {
-         printf("%.d ", a[i]);
-         if (a[i] % 2) {
+         printf("%d ", a[i]);
+         if (!(a[i] % 2)) {
              c++;
          }
        }
