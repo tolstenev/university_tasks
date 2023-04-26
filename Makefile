@@ -1,6 +1,6 @@
 CC		:= gcc
 CFLAGS	:= -std=c11 -pedantic -Wall -Werror -Wextra
-SRC		:= 1.c
+SRC		:= 3.c
 OBJ		:= $(SRC:.c=.o)
 TEST	:= test
 
