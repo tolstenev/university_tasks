@@ -10,14 +10,43 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define N 3
+#define Z 32
 
 float my_abs(float a) {
     if (a < 0) {
         a = -a;
     }
     return a;
+}
+
+int get_int(void) {
+    int a, amo;
+    long long b;
+    char buff[Z];
+    char *end;
+
+    while (1) {
+        fgets(buff, sizeof(buff), stdin);
+        amo = sscanf(buff, "%d", &a);
+        if (1 != amo) {
+            puts("Incorrect input. Please, try again:");
+            continue;
+        }
+        b = strtol(buff, &end, 10);
+        if ((buff != end) && (*end != '\n')) {
+            puts("Incorrect input. Please, try again:");
+            continue;
+        }
+        if (a != b) {
+            puts("Incorrect input. Please, try again:");
+            continue;
+        }
+        break;
+    }
+    return b;
 }
 
 int main(void) {
@@ -30,23 +59,27 @@ int main(void) {
     int goal_i = 0;
     int goal_j = 0;
 
+    // Инициализация матрицы
     puts("Enter the martix elements:");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            m[i][j] = k++;  // m[i][j] = get_int();
+            m[i][j] = get_int();
             sum += m[i][j];
 
         }
     }
-    printf("\n");
+
+    // Вывод исходной матрицы на экран
+    printf("Source matrix:\n");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             printf("%d ", m[i][j]);
         }
         printf("\n");
     }
-    printf("\n");
 
+    // Перебор всех элементов матрицы,
+    // вычисление для каждого необходимой разности
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             // Разница для текущего элемента:
@@ -65,28 +98,23 @@ int main(void) {
                 goal_i = i;
                 goal_j = j;
             }
-
-//            printf("\n");
-//            printf("i: %d\n", i);
-//            printf("j: %d\n", j);
-//            printf("m[i][j]: %d\n", m[i][j]);
-//            printf("sum: %.2f\n", sum);
-//            printf("calc: %.2f\n", (sum / (n - 1)) - i);
-//            printf("now_div: %.2f\n", now_div);
-//            printf("min_div: %.2f\n", min_div);
-//            printf("goal_i: %d\n", goal_i);
-//            printf("goal_j: %d\n", goal_j);
-
         }
-//        printf("\n");
-//        printf("min_div: %.2f\n", min_div);
-//        printf("goal_i: %d\n", goal_i);
-//        printf("goal_j: %d\n", goal_j);
-
-
-        // Своп элементов матрицы, чтобы найденный элемент
-        // оказался в центре
-
     }
+
+    // Смена мест элементов матрицы, чтобы найденный элемент
+    // оказался в центре
+    int buff = m[1][1];
+    m[1][1] = m[goal_i][goal_j];
+    m[goal_i][goal_j] = buff;
+
+    // Вывод модифицированной матрицы на экран
+    printf("Modified matrix:\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%d ", m[i][j]);
+        }
+        printf("\n");
+    }
+
     return (0);
 }
