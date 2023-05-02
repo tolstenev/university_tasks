@@ -15,11 +15,34 @@
 #define N 3
 #define Z 32
 
+float my_abs(float a);
+
+void my_swap(int *a, int *b);
+
+int get_int(void);
+
+void print_matrix(int m[N][N]);
+
+void print_matrix(int m[N][N]) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%d\t", m[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 float my_abs(float a) {
     if (a < 0) {
         a = -a;
     }
     return a;
+}
+
+void my_swap(int *a, int *b) {
+    int buff = *a;
+    *a = *b;
+    *b = buff;
 }
 
 int get_int(void) {
@@ -52,7 +75,6 @@ int get_int(void) {
 int main(void) {
     int m[N][N];
     int n = N * N;
-    int k = 0;
     float min_div = 0.0;
     float now_div = 0.0;
     float sum = 0.0;
@@ -60,23 +82,18 @@ int main(void) {
     int goal_j = 0;
 
     // Инициализация матрицы
-    puts("Enter the martix elements:");
+    // и вычисление суммы всех её элементов
+    puts("Enter the martix elements by new line:");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             m[i][j] = get_int();
             sum += m[i][j];
-
         }
     }
 
     // Вывод исходной матрицы на экран
     printf("Source matrix:\n");
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printf("%d ", m[i][j]);
-        }
-        printf("\n");
-    }
+    print_matrix(m);
 
     // Перебор всех элементов матрицы,
     // вычисление для каждого необходимой разности
@@ -92,7 +109,9 @@ int main(void) {
             if (i == 0 && j == 0) {
                 min_div = now_div;
             }
-            // Поиск наименьшего значения
+            // Поиск наименьшей разности,
+            // и запоминание координат целевого элемента,
+            // который будем заменять
             if (now_div < min_div) {
                 min_div = now_div;
                 goal_i = i;
@@ -101,20 +120,13 @@ int main(void) {
         }
     }
 
-    // Смена мест элементов матрицы, чтобы найденный элемент
-    // оказался в центре
-    int buff = m[1][1];
-    m[1][1] = m[goal_i][goal_j];
-    m[goal_i][goal_j] = buff;
+    // Смена мест элементов матрицы, таким образом,
+    // чтобы найденный элемент оказался в центре
+    my_swap(&m[1][1], &m[goal_i][goal_j]);
 
     // Вывод модифицированной матрицы на экран
     printf("Modified matrix:\n");
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printf("%d ", m[i][j]);
-        }
-        printf("\n");
-    }
+    print_matrix(m);
 
     return (0);
 }
