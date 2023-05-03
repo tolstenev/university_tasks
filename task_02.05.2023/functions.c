@@ -1,6 +1,6 @@
 #include "header.h"
 
-void print_matrix(int m[N][N]) {
+void print_matrix(int m[][N]) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             printf("%d\t", m[i][j]);
