@@ -22,9 +22,10 @@ int main(void) {
 
     // Инициализация матрицы
     // и вычисление суммы всех её элементов
-    puts("Enter the martix elements by new line:");
+    puts("Enter the martix m[3][3] elements by new line:");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
+            printf("Enter the m[%d][%d] = ", i, j);
             m[i][j] = get_int();
             sum += m[i][j];
         }
