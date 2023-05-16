@@ -1,44 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define K 1024
+#define Z 1024
 
-void get_string(char *str, int size_str) {
-  for (int i = 0; i < size_str; i++) {
+// Вариант с фиксированным буфером размера Z
+void get_string(char *str) {
+  for (int i = 0; i < Z; i++) {
     str[i] = 0;
   }
-   for(int i = 0; i < size_str; i++) {
-     str[i] = getchar();
-     if (str[i] == '\n') {
-       str[i] = '\0';
-       break;
-     }
-   }
+  for(int i = 0; i < Z; i++) {
+    str[i] = getchar();
+    if (str[i] == '\n') {
+      str[i] = '\0';
+      break;
+    } 
+  }
 }
 
-int string_length(char *str) {
+int len_string(char *s) {
   int l = 0;
-  while (str[l] != '\0') l++;
+  while (s[l] != '\0') {
+    l++;
+  }
   return l;
 }
 
-char lower(char c) {
-  if ('A' <= c && c <= 'Z') {
-    c = c + 32;
-  }
-  return c;
-}
-
 int main(void) {
-  char str[K];
-  int size_str = K;
+  char str[Z];
+  int len = 0;
+  char c;
+  int letter_counts[127] = {0};
+  
+  printf("Enter the string:\n");
+  get_string(str);
+  len = len_string(str);
+  
+  for (int i = 0; i < len; i++) {
+    c = str[i];
+    if (0 < c && c < 127) {
+      letter_counts[c]++;
+    }
+  }
 
-  puts("Enter the string:");
-  get_string(str, size_str);
-
-  printf("str: %s\n", str);
-
-  int len = string_length(str);
-  printf("len: %d\n", len);
+  printf("Frequency of letters:\n");
+  for (int i = 0; i < 127; i++) {
+    if (letter_counts[i] != 0)
+      printf("%c : %d\n", i, letter_counts[i]);
+  }
 
   return 0;
 }
