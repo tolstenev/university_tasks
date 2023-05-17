@@ -30,15 +30,15 @@ int get_int(void) {
 }
 
 int main(void) {
-    int n1, n2, nok, i;
-    printf("Enter first number: ");
+    int n1, n2, nok;
+    printf("Enter the first number: ");
     n1 = get_int();
-    printf("Enter second number: ");
+    printf("Enter the second number: ");
     n2 = get_int();
 
     if (n1 >= 0 && n2 >= 0) {
       nok = n2 * n1;
-      for (i = nok; i > 0; i--) {
+      for (int i = nok; i > 0; i--) {
           if (i % n1 == 0 && i % n2 == 0) {
               nok = i;
           }
