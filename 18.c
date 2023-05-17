@@ -30,10 +30,10 @@ int get_int(void) {
 }
 
 int main(void) {
-    int n1, n2, nod, i;
-    printf("Enter first number: ");
+    int n1, n2, nod;
+    printf("Enter the first number: ");
     n1 = get_int();
-    printf("Enter second number: ");
+    printf("Enter the second number: ");
     n2 = get_int();
 
     if (n1 >= 0 && n2 >= 0) {
@@ -42,7 +42,7 @@ int main(void) {
       } else {
         nod = n2;
       }
-      for (i = nod; i > 0; i--) {
+      for (int i = nod; i > 0; i--) {
           if (n1 % i == 0 && n2 % i == 0) {
               nod = i;
               break;
