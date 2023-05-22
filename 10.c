@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define M 3
 #define N 3
+#define K 3
 #define Z 32
 
 int get_int(void) {
@@ -32,12 +32,12 @@ int get_int(void) {
 }
 
 int main() {
-    int m[M][N];
+    int m[N][K];
     int n = 0;
 
     printf("Enter the matrix elements:\n");
-    for (int i = 0; i < M; i++) {
-        for (int j = 0; j < N; j++) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < K; j++) {
             printf("Enter the matrix (%d, %d) element: ", i, j);
             m[i][j] = get_int();
             if (m[i][j] < 0) {
@@ -49,8 +49,8 @@ int main() {
     int *neg = (int *)malloc(n * sizeof(int));
     int k = 0;
 
-    for (int i = 0; i < M; i++) {
-        for (int j = 0; j < N; j++) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < K; j++) {
             if (m[i][j] < 0) {
                 neg[k++] = m[i][j];
             }
@@ -63,5 +63,6 @@ int main() {
     }
     printf("\n");
 
+    free(neg);
     return 0;
 }
