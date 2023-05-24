@@ -1,6 +1,6 @@
 CC		:= gcc
 CFLAGS	:= -std=c11 -pedantic -Wall -Werror -Wextra
-SRC		:= 12.c
+SRC		:= 19.c
 OBJ		:= $(SRC:.c=.o)
 TEST	:= test
 
@@ -15,7 +15,7 @@ test: $(NAME)
 		$(CC) $< $(SRC) -o $(TEST)
 		./$(TEST)
 clean:
-		rm -rf $(OBJ) $(TEST).out
+		rm -rf $(OBJ) $(TEST)
 		rm -rf $(TEST)
 re:
 		$(MAKE) clean

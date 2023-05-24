@@ -1,4 +1,5 @@
 cmake-build-debug/
 .idea/
-./test
+test
 *.iml
+CMakeLists.txt
