@@ -52,12 +52,12 @@ int main() {
         printf("\n");
     }
 
-    printf("Enter the number of column to cyclic shift: ");
+    printf("Enter the number of row to cyclic shift: ");
     int a = get_int();
     printf("Enter the value of shift: ");
     int shift = get_int();
 
-    for (int i = 0; i < shift; i++) {
+    for (int s = 0; s < shift; s++) {
         int tmp = m[a][k-1];
         for (int j = k-1; j > 0; j--) {
             m[a][j] = m[a][j-1];
