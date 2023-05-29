@@ -30,23 +30,18 @@ int get_int(void) {
 }
 
 int main() {
-//    printf("Enter the number of rows: ");
-//    int n = get_int();
-//    printf("Enter the number of columns: ");
-//    int k = get_int();
-    int n = 3;
-    int k = 3;
-    int z = 0;
+    printf("Enter the number of rows: ");
+    int n = get_int();
+    printf("Enter the number of columns: ");
+    int k = get_int();
     int m[n][k];
     int tmp[n][k];
 
     printf("Enter the matrix elements:\n");
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < k; j++) {
-//            printf("Enter the matrix (%d, %d) element: ", i, j);
-//            m[i][j] = get_int();
-            m[i][j] = ++z;
-            tmp[i][j] = 0;
+            printf("Enter the matrix (%d, %d) element: ", i, j);
+            m[i][j] = get_int();
         }
     }
 
@@ -77,7 +72,6 @@ int main() {
         }
         printf("\n");
     }
-
 
     return 0;
 }
